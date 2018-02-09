@@ -9,17 +9,19 @@ Data Source: The data was gotten from DataSF (https://data.sfgov.org/Culture-and
 Backend API:
 GET /search: Get all locations where movies were filmed in San Francisco.
 
-POST /search?searchQuery=<Search_Criteria>: Get all locations based on the given search criteria. The search can be based on Movie title, San Francisco locations or the Release Year.
+POST /search?searchQuery=<Search_Criteria>: Get all locations based on the given search criteria. The search can be based on the Movie title, the name of the San Francisco location or the Release Year of the movie. Partial matches are also supported.
 
 The API response for both GET and POST is:
-[{&nbsp;
-  location:&lt;String&gt;,&nbsp;
-  latitude:&lt;Double&gt;,&nbsp;
-  longitude:&lt;Double&gt;,&nbsp;
-  moviesForLocation:[{&nbsp;
-    title:&lt;String&gt;,&nbsp;
-    releaseYear:&lt;Integer&gt;&nbsp;
+<b>
+[{<br />
+  location:&lt;String&gt;,<br />
+  latitude:&lt;Double&gt;,<br />
+  longitude:&lt;Double&gt;,<br />
+  moviesForLocation:[{<br />
+    title:&lt;String&gt;,<br />
+    releaseYear:&lt;Integer&gt;<br />
   }]&nbsp;
-}]&nbsp;
-&nbsp;
+}]
+</b>
+<br />
 Technical Specs: Google App Engine SDK 1.9.60, Java, Google Maps JavaScript API, Google Maps Geocoding API, Twitter Bootstrap 4.0.0, Twitter Typeahead, Objectify 5.1.22, Apache Maven 3.5.2, Apache Commons CSV 1.5, Jackson JSON project 2.8.7, Eclipse IDE 4.7.2 (Oxygen), JQuery 3.3.1
