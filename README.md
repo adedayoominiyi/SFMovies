@@ -1,4 +1,4 @@
-SF Movies
+<b>SF Movies</b>
 
 A service that shows on a map where movies have been filmed in San Francisco. The user can filter the view by providing a search criteria.
 <br />
@@ -14,6 +14,7 @@ A service that shows on a map where movies have been filmed in San Francisco. Th
 <b>GET /search</b>: Get all locations where movies were filmed in San Francisco.
 <br />
 <b>POST /search?searchQuery=<Search_Criteria></b>: Get all locations based on the given search criteria. The search can be based on the Movie title, the name of the San Francisco location or the Release Year of the movie. Partial matches are also supported.
+<br />
 <br />
 The API response for both GET and POST is:
 <b>
@@ -41,6 +42,7 @@ Apache Maven 3.5.2,
 Apache Commons CSV 1.5, 
 Jackson JSON project 2.8.7, 
 Eclipse IDE 4.7.2 (Oxygen), 
-JQuery 3.3.1
-Junit 4
-PowerMock/Mockito 2
+JQuery 3.3.1,
+Junit 4,
+PowerMock/Mockito 2,
+Maven 3
