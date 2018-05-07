@@ -1,7 +1,13 @@
 package com.ominiyi.model;
-public class InputObject {
 
-	public InputObject() {
+/**
+ * The InputObject class is an abstract class that is inherited by other model classes.
+ *
+ * @author  Adedayo Ominiyi
+ */
+public abstract class InputObject {
+
+	protected InputObject() {
 		super();
 	}
 	

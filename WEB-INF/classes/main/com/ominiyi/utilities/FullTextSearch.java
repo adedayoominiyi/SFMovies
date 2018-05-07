@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.GetRequest;
@@ -19,10 +20,19 @@ import com.google.appengine.api.search.ScoredDocument;
 import com.google.appengine.api.search.SearchException;
 import com.google.appengine.api.search.SearchServiceFactory;
 import com.google.appengine.api.search.StatusCode;
+
 import com.ominiyi.model.Movie;
 
+/**
+ * The FullTextSearch class is responsible for interacting with the AppEngine full-text 
+ * search index. 
+ *
+ * @author  Adedayo Ominiyi
+ */
 public class FullTextSearch {
 
+	private final static Logger LOGGER = Logger.getLogger(FullTextSearch.class.getName());
+	
 	// Hack: Only about 200 documents can be processed by App Engine at a time.
 	public static final int DOCUMENTS_PROCESSING_LIMIT = 200;
 	private static final String SEARCH_INDEX = "movieFullTextSearchIndex";
@@ -59,7 +69,7 @@ public class FullTextSearch {
 				index.delete(docIds);
 				docIds.clear();
 			} catch (Exception ex) {
-				LogHelper.log(FullTextSearch.class, Level.SEVERE, ex);
+				LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
 				Thread.sleep(delay * 1000);
 				delay *= 2; // easy exponential backoff
 				continue;
@@ -94,7 +104,7 @@ public class FullTextSearch {
 			try {
 				index.put(documents);
 			} catch (Exception ex) {
-				LogHelper.log(FullTextSearch.class, Level.SEVERE, ex);
+				LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
 				Thread.sleep(delay * 1000);
 				delay *= 2; // easy exponential backoff
 				continue;
@@ -137,7 +147,7 @@ public class FullTextSearch {
 					searchResults.add(movie);
 				}
 			} catch (SearchException ex) {
-				LogHelper.log(FullTextSearch.class, Level.SEVERE, ex);
+				LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
 				if (StatusCode.TRANSIENT_ERROR.equals(ex.getOperationResult().getCode()) && ++attempts < maxRetry) {
 					// retry
 					try {
@@ -168,7 +178,7 @@ public class FullTextSearch {
 			try {
 				index.put(document);
 			} catch (PutException ex) {
-				LogHelper.log(FullTextSearch.class, Level.SEVERE, ex);
+				LOGGER.log(Level.SEVERE, ex.getMessage(), ex);
 				if (StatusCode.TRANSIENT_ERROR.equals(ex.getOperationResult().getCode()) && ++attempts < maxRetry) { // retrying
 					Thread.sleep(delay * 1000);
 					delay *= 2; // easy exponential backoff

@@ -6,6 +6,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * The SearchResult class is used to hold search results.
+ *
+ * @author  Adedayo Ominiyi
+ */
 public class SearchResult {
 	
 	private String location;
@@ -91,10 +96,7 @@ public class SearchResult {
 			}
 			
 			int releaseYearCompare = Integer.compare(this.releaseYear, other.releaseYear);
-			if (releaseYearCompare != 0) {
-				return releaseYearCompare;
-			}
-			return this.title.compareToIgnoreCase(other.title);
+			return releaseYearCompare != 0 ? releaseYearCompare : this.title.compareToIgnoreCase(other.title);
 		}
 	}
 }

@@ -7,8 +7,14 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
+/**
+ * The Setting class is used to hold a single key/value setting for the application.
+ *
+ * @author  Adedayo Ominiyi
+ */
 @Entity
 public class Setting {
+	
 	@Id private Long id;
 	@Index private String key;
 	private String value;
@@ -45,7 +51,7 @@ public class Setting {
 	}
 	public static Setting findSetting(String key) {
 		Setting setting = ofy().load().type(Setting.class).filter("key", key).first().now();
-		
+
 		return setting;
 	}
 }

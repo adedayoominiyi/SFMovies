@@ -13,6 +13,12 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
+/**
+ * The FileLoader class reads data from a CSV file input stream and returns a list where is element
+ * is a single row of the CSV file.
+ *
+ * @author  Adedayo Ominiyi
+ */
 public class FileLoader {
 
 	private FileLoader() {}
@@ -27,7 +33,7 @@ public class FileLoader {
 		}
 	}
 
-	public static <T> List<T> loadFile(BufferedReader reader, Class<T> clazz)
+	private static <T> List<T> loadFile(BufferedReader reader, Class<T> clazz)
 			throws IOException, NoSuchMethodException, SecurityException, InstantiationException,
 			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		List<T> list = new ArrayList<>();

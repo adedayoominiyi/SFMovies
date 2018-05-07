@@ -22,10 +22,7 @@ public class SearchServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Set<Movie> foundMovies = Movie.fetchUniqueMovies();
-		
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().print(makeJsonResponse(foundMovies));
+		printJsonResponse(foundMovies, response);
 	}
 
 	@Override
@@ -33,6 +30,11 @@ public class SearchServlet extends HttpServlet {
 		String searchQuery = request.getParameter("searchQuery");
 		
 		Set<Movie> foundMovies = FullTextSearch.findDocumentsWithContent(searchQuery);
+		printJsonResponse(foundMovies, response);
+	}
+	
+	private void printJsonResponse(Set<Movie> foundMovies, HttpServletResponse response) throws JsonProcessingException, IOException
+	{
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().print(makeJsonResponse(foundMovies));

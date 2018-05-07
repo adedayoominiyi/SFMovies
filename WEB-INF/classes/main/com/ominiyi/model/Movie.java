@@ -16,8 +16,14 @@ import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
+/**
+ * The Movie class is a model class that represents the details of a single movie.
+ *
+ * @author  Adedayo Ominiyi
+ */
 @Entity
 public class Movie extends InputObject {
+	
 	@Id private Long id;
 	private String title;
 	private Integer releaseYear;

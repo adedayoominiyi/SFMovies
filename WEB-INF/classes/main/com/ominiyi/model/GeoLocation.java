@@ -1,6 +1,11 @@
 package com.ominiyi.model;
 import org.apache.commons.csv.CSVRecord;
 
+/**
+ * The GeoLocation is a model class that represents a single geopoint for a single location.
+ *
+ * @author  Adedayo Ominiyi
+ */
 public class GeoLocation extends InputObject {
 
 	private String location;
